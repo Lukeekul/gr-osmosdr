@@ -258,7 +258,6 @@ source_impl::source_impl( const std::string &args )
   BOOST_FOREACH(std::string arg, arg_list) {
 
     dict_t dict = params_to_dict(arg);
-    dict_t manufaturer = params_to_dict(dev_list.front());
 
 //    std::cerr << std::endl;
 //    BOOST_FOREACH( dict_t::value_type &entry, dict )

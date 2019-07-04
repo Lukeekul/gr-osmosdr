@@ -255,7 +255,6 @@ source_impl::source_impl( const std::string &args )
     else
       throw std::runtime_error("No supported devices found (check the connection and/or udev rules).");
   }
-
   BOOST_FOREACH(std::string arg, arg_list) {
 
     dict_t dict = params_to_dict(arg);
@@ -332,7 +331,7 @@ source_impl::source_impl( const std::string &args )
 
 #ifdef ENABLE_BLADERF
     if ( dict.count("bladerf") ) {
-      bladerf_source_c_sptr src = make_bladerf_source_c( arg );
+      bladerf_source_c_sptr src = make_bladerf_source_c( args );
       block = src; iface = src.get();
     }
 #endif

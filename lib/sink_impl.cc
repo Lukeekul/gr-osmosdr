@@ -187,7 +187,7 @@ sink_impl::sink_impl( const std::string &args )
 #endif
 #ifdef ENABLE_BLADERF
     if ( dict.count("bladerf") ) {
-      bladerf_sink_c_sptr sink = make_bladerf_sink_c( arg );
+      bladerf_sink_c_sptr sink = make_bladerf_sink_c( args );
       block = sink; iface = sink.get();
     }
 #endif

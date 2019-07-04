@@ -593,7 +593,7 @@ void bladerf_sink_c::set_biastee_mode(const std::string &mode)
   int status;
   bool enable;
 
-  if (mode == "on" || mode == "1" || mode == "rx") {
+  if (mode == "on" || mode == "1" || mode == "tx") {
     enable = true;
   } else {
     enable = false;

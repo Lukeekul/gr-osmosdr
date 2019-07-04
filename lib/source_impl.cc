@@ -191,8 +191,8 @@ source_impl::source_impl( const std::string &args )
     }
   }
 
+  std::vector< std::string > dev_list;
   if ( ! device_specified ) {
-    std::vector< std::string > dev_list;
 #ifdef ENABLE_OSMOSDR
     BOOST_FOREACH( std::string dev, osmosdr_src_c::get_devices() )
       dev_list.push_back( dev );
@@ -255,10 +255,10 @@ source_impl::source_impl( const std::string &args )
     else
       throw std::runtime_error("No supported devices found (check the connection and/or udev rules).");
   }
-
   BOOST_FOREACH(std::string arg, arg_list) {
 
     dict_t dict = params_to_dict(arg);
+    dict_t manufaturer = params_to_dict(dev_list.front());
 
 //    std::cerr << std::endl;
 //    BOOST_FOREACH( dict_t::value_type &entry, dict )
@@ -334,7 +334,6 @@ source_impl::source_impl( const std::string &args )
     if ( dict.count("bladerf") ) {
       bladerf_source_c_sptr src = make_bladerf_source_c( args );
       block = src; iface = src.get();
-      break;
     }
 #endif
 

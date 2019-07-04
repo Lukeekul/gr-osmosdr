@@ -332,8 +332,9 @@ source_impl::source_impl( const std::string &args )
 
 #ifdef ENABLE_BLADERF
     if ( dict.count("bladerf") ) {
-      bladerf_source_c_sptr src = make_bladerf_source_c( arg );
+      bladerf_source_c_sptr src = make_bladerf_source_c( args );
       block = src; iface = src.get();
+      break;
     }
 #endif
 
